@@ -10,5 +10,14 @@ import Foundation
 
 class Concentration
 {
+    var cards = [Card]()
     
+    func choseCards(at index: Int) {
+        
+    }
+
+    init(numberOfPairsOfCards: Int) {
+        let card = Card(isFaceUp: false, isMatched: false, identifier: identifier)
+    }
 }
+

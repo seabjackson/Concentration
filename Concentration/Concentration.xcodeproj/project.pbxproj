@@ -13,6 +13,7 @@
 		B58ABEBC1FD54253004C8A06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B58ABEBB1FD54253004C8A06 /* Assets.xcassets */; };
 		B58ABEBF1FD54253004C8A06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58ABEBD1FD54253004C8A06 /* LaunchScreen.storyboard */; };
 		B5A2B14020060A5300CE335B /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2B13F20060A5300CE335B /* Concentration.swift */; };
+		B5A2B142200610C600CE335B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2B141200610C600CE335B /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		B58ABEBE1FD54253004C8A06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B58ABEC01FD54253004C8A06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5A2B13F20060A5300CE335B /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
+		B5A2B141200610C600CE335B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				B58ABEB61FD54253004C8A06 /* ViewController.swift */,
 				B58ABEB81FD54253004C8A06 /* Main.storyboard */,
 				B5A2B13F20060A5300CE335B /* Concentration.swift */,
+				B5A2B141200610C600CE335B /* Card.swift */,
 				B58ABEC01FD54253004C8A06 /* Info.plist */,
 				B58ABEC61FD5D030004C8A06 /* Supporting Files */,
 			);
@@ -150,6 +153,7 @@
 				B58ABEB71FD54253004C8A06 /* ViewController.swift in Sources */,
 				B58ABEB51FD54253004C8A06 /* AppDelegate.swift in Sources */,
 				B5A2B14020060A5300CE335B /* Concentration.swift in Sources */,
+				B5A2B142200610C600CE335B /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
