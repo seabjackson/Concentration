@@ -17,7 +17,10 @@ class Concentration
     }
 
     init(numberOfPairsOfCards: Int) {
-        let card = Card(isFaceUp: false, isMatched: false, identifier: identifier)
+        for identifier in 1...numberOfPairsOfCards {
+            let card = Card(identifier: identifier)
+            cards += [card, card]
+        }
     }
 }
 
