@@ -3,15 +3,13 @@ import UIKit
 
 class ViewController: UIViewController
 {
-    var game = Concentration()
+   lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
     
     var flipCount = 0 {
         didSet {
              flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
-    
-    var emojiChoices  = ["🎃", "👻", "🎃", "👻"]
     
     @IBOutlet weak var flipCountLabel: UILabel!
     
@@ -20,22 +18,37 @@ class ViewController: UIViewController
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) {
-            flipCard(withEmoji: emojiChoices[cardNumber], on: sender)
+            game.choseCard(at: cardNumber)
+            updateViewFromModel()
         } else {
             print("chosen card was not in cardButtons")
         }
     }
     
-    func flipCard(withEmoji emoji: String, on button: UIButton) {
-        if button.currentTitle == emoji {
-            button.setTitle("", for: UIControlState.normal)
-            button.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
-        } else {
-            button.setTitle(emoji, for: UIControlState.normal)
-            button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    func updateViewFromModel() {
+        for index in cardButtons.indices {
+            let button = cardButtons[index]
+            let card = game.cards[index]
+            
+            if card.isFaceUp {
+                button.setTitle(emoji(for: card), for: UIControlState.normal)
+                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            } else {
+                button.setTitle("", for: UIControlState.normal)
+                button.backgroundColor = card.isMatched ?  #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 0) : #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+            }
         }
+   
     }
     
+    var emojiChoices  = ["🦇", "😮", "😱", "👻", "🎃", "😈", "💀", "☠️", "👽", "🙀", "🍎", "🥓", "🥩", "🍖", "🍡"]
+    
+    var emoji = Dictionary<Int, String>()
+    
+    func emoji(for card: Card) -> String {
+        let chosenEmoji = emoji[card.identifier]
+        return "?"
+    }
 }
 
 
