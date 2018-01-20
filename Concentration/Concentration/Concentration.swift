@@ -35,11 +35,13 @@ class Concentration
         }
     }
     
+    
     func reset() {
         for index in cards.indices {
             cards[index].isFaceUp = false
             cards[index].isMatched = false
         }
+        cards.shuffle()
     }
 
     init(numberOfPairsOfCards: Int) {
@@ -49,9 +51,52 @@ class Concentration
         }
         
         // TODO: Shuffle the cards
-        cards.
+        cards.shuffle()
     }
 }
+
+extension Array {
+    
+    public func random(_ n: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(n)))
+    }
+    
+    public mutating func shuffle() {
+        for i in stride(from: count - 1, through: 1, by: -1) {
+            let j = random(i + 1)
+            if i != j {
+                self.swapAt(i, j)
+            }
+        }
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
