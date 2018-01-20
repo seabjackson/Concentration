@@ -15,6 +15,7 @@ class ViewController: UIViewController
     
     @IBOutlet var cardButtons: [UIButton]!
     
+    // MARK: Handle touch behaviour
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) {
@@ -24,6 +25,13 @@ class ViewController: UIViewController
             print("chosen card was not in cardButtons")
         }
     }
+    
+    @IBAction func startNewGame(_ sender: UIButton) {
+        game.reset()
+        updateViewFromModel()
+        flipCount = 0
+    }
+    
     
     func updateViewFromModel() {
         for index in cardButtons.indices {
