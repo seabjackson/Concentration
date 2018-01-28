@@ -3,21 +3,12 @@ import UIKit
 
 class ViewController: UIViewController
 {
-    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-
-    var flipCount = 0 {
-        didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
-        }
+    lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    
+    var numberOfPairsOfCards: Int {
+        
+        return (cardButtons.count + 1) / 2
     }
-    
-    var score = 0 {
-        didSet {
-            scoreLabel.text = "Score: \(score)"
-        }
-    }
-    
-    
     
     var emojiChoices = [String]()
     
@@ -28,7 +19,6 @@ class ViewController: UIViewController
     
     // MARK: Handle touch behaviour
     @IBAction func touchCard(_ sender: UIButton) {
-        flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) {
             game.choseCard(at: cardNumber)
             updateViewFromModel()
@@ -40,7 +30,6 @@ class ViewController: UIViewController
     @IBAction func startNewGame(_ sender: UIButton) {
         game.reset()
         updateViewFromModel()
-        flipCount = 0
         let randomIndex = Int(arc4random_uniform(UInt32(emojiThemes.count)))
         indexOfTheme = randomIndex
     }
@@ -65,6 +54,8 @@ class ViewController: UIViewController
                 button.backgroundColor = card.isMatched ?  #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 0) : #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
             }
         }
+        flipCountLabel.text = "Flips: \(game.flipCount)"
+        scoreLabel.text = "Score: \(game.score)"
     }
     
     private struct Theme {
