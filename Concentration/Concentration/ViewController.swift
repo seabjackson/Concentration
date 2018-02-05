@@ -10,7 +10,7 @@ class ViewController: UIViewController
         return (cardButtons.count + 1) / 2
     }
     
-    var emojiChoices = [String]()
+    var emojiChoices = String()
     
     @IBOutlet private weak var scoreLabel: UILabel!
     @IBOutlet private weak var flipCountLabel: UILabel!
@@ -60,16 +60,16 @@ class ViewController: UIViewController
     
     private struct Theme {
         var name: String
-        var emojis: [String]
+        var emojis: String
     }
     
     private var emojiThemes: [Theme] = [
-        Theme(name: "animals", emojis: ["🐶", "🐻", "🐼", "🐯", "🦁", "🐮", "🐷", "🐵", "🐴", "🦉", "🦋"]),
-        Theme(name: "fruits", emojis: ["🍎", "🍐", "🍋", "🍌", "🍉", "🍇", "🍓", "🍈", "🍒", "🥝"]),
-        Theme(name: "nature", emojis: ["🌲", "☘️", "🌼", "🌞", "🌱", "🌹", "🎋", "🍄", "🌵", "🌺"]),
-        Theme(name: "balls", emojis: ["⚽️", "🏀", "🏈", "⚾️", "🎾", "🏐", "🏉", "🎱"]),
-        Theme(name: "sports", emojis: ["⛷", "🏂", "🏋🏿‍♂️", "🏌🏾‍♂️", "🏄🏻‍♂️", "🚣🏻‍♂️", "🏊‍♀️", "🤽🏼‍♀️", "🧘🏻‍♂️", "⛹🏿‍♀️"]),
-        Theme(name: "transportation", emojis: ["✈️", "🚗", "🚕", "🚜", "🛵", "🏍", "🚲", "🚌", "🚅", "🛳", "🚁"])
+        Theme(name: "animals", emojis: "🐶🐻🐼🐯🦁🐮🐷🐵🐴🦉🦋"),
+        Theme(name: "fruits", emojis: "🍎🍐🍋🍌🍉🍇🍓🍈🍒🥝"),
+        Theme(name: "nature", emojis: "🌲☘️🌼🌞🌱🌹🎋🍄🌵🌺"),
+        Theme(name: "balls", emojis: "⚽️🏀🏈⚾️🎾🏐🏉🎱"),
+        Theme(name: "sports", emojis: "⛷🏂🏋🏿‍♂️🏌🏾‍♂️🏄🏻‍♂️🚣🏻‍♂️🏊‍♀️🤽🏼‍♀️🧘🏻‍♂️⛹🏿‍♀️"),
+        Theme(name: "transportation", emojis: "✈️🚗🚕🚜🛵🏍🚲🚌🚅🛳🚁")
     ]
     
     private var indexOfTheme = 0 {
@@ -83,7 +83,8 @@ class ViewController: UIViewController
     
     private func emoji(for card: Card) -> String {
         if emoji[card] == nil, emojiChoices.count > 0 {
-            emoji[card] = emojiChoices.remove(at: emojiChoices.count.arc4random)
+            let randomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4random)
+            emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
         }
         return emoji[card] ?? "?"
     }
